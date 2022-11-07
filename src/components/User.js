@@ -14,8 +14,8 @@ function User({ item, deleteContact, editContact }) {
 
   const dispatch = useDispatch();
 
-  const handleDelete = async () => {
-    await deleteDoc(doc(db, "contacts", "DC"));
+  const handleDelete = async (id) => {
+    await deleteDoc(doc(db, "contacts", id));
   };
 
   return (
@@ -43,7 +43,7 @@ function User({ item, deleteContact, editContact }) {
             {item.address}
           </Card.Subtitle>
           <Card.Text>{item.phone}</Card.Text>
-          <Button variant="info" onClick={handleDelete}>
+          <Button variant="info" onClick={()=>handleDelete(item.id)}>
             Delete
           </Button>{" "}
           <Button variant="info" onClick={handleShow}>
